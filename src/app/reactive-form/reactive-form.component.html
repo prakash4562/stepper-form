@@ -1,0 +1,11 @@
+<div class="container pt-5">
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <input type="text" placeholder="Enter your username" formControlName="user" class="form-control">
+    <div *ngIf="user && user.invalid && user.touched" style="color: red">invalid username!!</div><br><br>
+
+    <input type="password" placeholder="Enter your password" formControlName="password" class="form-control">
+    <div *ngIf="password && password.invalid && password.touched" style="color: red">invalid password!!</div><br><br>
+
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+  </form>
+</div>
