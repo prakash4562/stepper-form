@@ -11,6 +11,10 @@ import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatStepperModule } from "@angular/material/stepper";
 import { StepperFormComponent } from './stepper-form/stepper-form.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import { MatTableModule } from "@angular/material/table";
 
 
 @NgModule({
@@ -26,7 +30,11 @@ import { StepperFormComponent } from './stepper-form/stepper-form.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

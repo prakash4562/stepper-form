@@ -1,1 +1,131 @@
-<p>stepper-form works!</p>
+<div class="container">
+  <mat-horizontal-stepper labelPosition="bottom" linear="false">
+      <mat-step [stepControl]="profileFormGroup">
+        <ng-template matStepLabel>Personal details</ng-template>
+        <form [formGroup]="profileFormGroup">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>First name</mat-label>
+              <input matInput type="text" placeholder="Enter first name" formControlName="firstName" required>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Last name</mat-label>
+              <input matInput placeholder="Enter last name" type="text" formControlName="lastName">
+            </mat-form-field>
+          </div>
+
+          <div formArrayName="mobileNumbers">
+            <div *ngFor="let number of MobileNumbers.controls; let i = index">
+              <mat-form-field appearance="outline">
+                <mat-label>Mobile no.</mat-label>
+                <input matInput type="text" placeholder="Enter mobile number" [formControlName]="i">
+              </mat-form-field>
+              <button type="button" class="btn btn-danger m-2" (click)="deleteMobileNumber(i)">Delete</button>
+            </div>
+
+            <div>
+              <button type="button" class="btn btn-sm btn-primary m-2" (click)="addMobileNumber()">+ Add another number</button>
+            </div>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext (click)="submitProfileFormData()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="addressFormGroup">
+        <ng-template matStepLabel>Address details</ng-template>
+        <form [formGroup]="addressFormGroup">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Street</mat-label>
+              <input matInput type="text" placeholder="Enter your street name" formControlName="street" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input matInput type="text" placeholder="Enter your city name" formControlName="city" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input matInput type="text" placeholder="Enter your state name" formControlName="state" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Pin code</mat-label>
+              <input matInput type="text" placeholder="Enter your pin code" formControlName="pincode" >
+            </mat-form-field>
+          </div>
+        </form>
+        <div>
+          <button mat-button matStepperPrevious>Previous</button>
+          <button mat-button matStepperNext (click)="submitAddressData()">Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="educationFormGroup">
+        <ng-template matStepLabel>Education details</ng-template>
+        <form [formGroup]="educationFormGroup">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Graduation</mat-label>
+              <input matInput type="text" placeholder="Enter your graduation" formControlName="graduation" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Marks in %</mat-label>
+              <input matInput type="text" placeholder="Enter your marks" formControlName="marks" >
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Passing Year</mat-label>
+              <input matInput type="text" placeholder="Enter passing year" formControlName="passingYear" >
+            </mat-form-field>
+          </div>
+        </form>
+        <div>
+          <button mat-button matStepperPrevious>Previous</button>
+          <button mat-button matStepperNext (click)="submitEducationData()">Next</button>
+        </div>
+      </mat-step>
+
+      <mat-step [stepControl]="othersFormGroup" optional>
+        <ng-template matStepLabel>other details</ng-template>
+        <form [formGroup]="othersFormGroup">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Aadhar number</mat-label>
+              <input matInput type="text" placeholder="Enter aadhar" formControlName="aadhar" >
+            </mat-form-field>
+          </div>
+        </form>
+        <div>
+          <button mat-button matStepperPrevious>Previous</button>
+          <button mat-button matStepperNext (click)="submitOthersData()">Next</button>
+        </div>
+      </mat-step>
+
+    <mat-step label="Done">
+      <div>
+        <button mat-button type="submit" class="btn btn-primary" (click)="showData()">Submit</button>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Previous</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>
+
+
+
+
